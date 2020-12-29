@@ -25,4 +25,5 @@ jobs:
       with:
         PROJECT_FILE_PATH: src/Anvyl.JsonLocalizer/Anvyl.JsonLocalizer.csproj
         TAG_FORMAT: 'v*-beta'
+        NUGET_SOURCE: https://nuget.pkg.github.com/amoraitis  
         NUGET_KEY: ${{secrets.PACKAGES_API_KEY}}
