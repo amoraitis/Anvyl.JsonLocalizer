@@ -21,7 +21,7 @@ jobs:
     - name: Build
       run: dotnet build src/Anvyl.JsonLocalizer --configuration Release --no-restore
     - name: Publish to NuGet
-      uses: Rebel028/publish-nuget@v2.6.0
+      uses: Rebel028/publish-nuget@303a8b8c070b46bc3a1f32a97c0930fbc9f17027
       with:
         PROJECT_FILE_PATH: src/Anvyl.JsonLocalizer/Anvyl.JsonLocalizer.csproj
         TAG_FORMAT: 'v*-beta'
