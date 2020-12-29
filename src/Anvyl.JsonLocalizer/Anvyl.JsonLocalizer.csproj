@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
-    <PackageVersion>1.1.1</PackageVersion>
+    <Version>1.1.1</Version>
     <RepositoryUrl>https://github.com/amoraitis/Anvyl.JsonLocalizer</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Authors>Valeriu Balan, Anastasios Moraitis</Authors>
