@@ -5,6 +5,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -88,7 +89,16 @@ namespace Anvyl.JsonLocalizer
         /// <returns>The strings.</returns>
         public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
         {
-            var filePath = $"{_options.Value.ResourcesPath}/{CultureInfo.CurrentCulture.Name}.json";
+            var files = System.IO.Directory.EnumerateFiles(_options.Value.ResourcesPath,
+                $"*{CultureInfo.CurrentCulture.Name}*");
+
+            return files
+                .Select(GetSingleResourceBatch)
+                .Aggregate((left, right) => left.Concat(right));
+        }
+
+        private IEnumerable<LocalizedString> GetSingleResourceBatch(string filePath)
+        {
             using (var str = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (var sReader = new StreamReader(str))
             using (var reader = new JsonTextReader(sReader))
@@ -126,7 +136,9 @@ namespace Anvyl.JsonLocalizer
 
         private string GetString(string key)
         {
-            var relativeFilePath = $"{_options.Value.ResourcesPath}/{CultureInfo.CurrentCulture.Name}.json";
+            var values = key.Split('.').Take(2).ToList();
+            var (ns, loc) = Tuple.Create(values[0], values[1]);
+            var relativeFilePath = $"{_options.Value.ResourcesPath}/{ns}.{CultureInfo.CurrentCulture.Name}.json";
             var fullFilePath = Path.GetFullPath(relativeFilePath);
 
             if (File.Exists(fullFilePath))
@@ -135,20 +147,22 @@ namespace Anvyl.JsonLocalizer
                 var cacheValue = _cache.GetString(cacheKey);
                 if (!string.IsNullOrEmpty(cacheValue)) return cacheValue;
 
-                var result = PullDeserialize<string>(key, Path.GetFullPath(relativeFilePath));
+                var result = PullDeserialize<string>(loc, Path.GetFullPath(relativeFilePath));
                 if (!string.IsNullOrEmpty(result))
                     _cache.SetString(cacheKey, result);
 
                 return result;
             }
 
-            WriteEmptyKeys(new CultureInfo("en-US"), fullFilePath);
-            return default(string);
+            WriteEmptyKeys(new CultureInfo("en-US"), fullFilePath, key);
+            return string.Empty;
         }
 
-        private void WriteEmptyKeys(CultureInfo sourceCulture, string fullFilePath)
+        private void WriteEmptyKeys(CultureInfo sourceCulture, string fullFilePath, string key)
         {
-            var sourceFilePath = $"{_options.Value.ResourcesPath}/{sourceCulture.Name}.json";
+            var values = key.Split('.').Take(2).ToList();
+            var (ns, loc) = Tuple.Create(values[0], values[1]);
+            var sourceFilePath = $"{_options.Value.ResourcesPath}/{ns}.{sourceCulture.Name}.json";
 
             using (var str = new FileStream(sourceFilePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (var outStream = File.Create(fullFilePath))

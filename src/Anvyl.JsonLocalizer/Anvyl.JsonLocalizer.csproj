@@ -1,31 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <PackageVersion>1.0.1</PackageVersion>
-    <RepositoryUrl>https://github.com/aodpi/Anvyl.JsonLocalizer</RepositoryUrl>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+    <PackageVersion>1.1.1</PackageVersion>
+    <RepositoryUrl>https://github.com/amoraitis/Anvyl.JsonLocalizer</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Authors>Valeriu Balan</Authors>
-    <Description>Json Localization for ASP.NET Core</Description>
-    <PackageProjectUrl>https://github.com/aodpi/Anvyl.JsonLocalizer</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/aodpi/Anvyl.JsonLocalizer/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageTags>asp.net core localization json i18n cache redis</PackageTags>
+    <Authors>Valeriu Balan, Anastasios Moraitis</Authors>
+    <Description>Json Localization for .net</Description>
+    <PackageProjectUrl>https://github.com/amoraitis/Anvyl.JsonLocalizer</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/amoraitis/Anvyl.JsonLocalizer/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>.net localization json i18n cache redis</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
-
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.0\Anvyl.JsonLocalizer.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netcoreapp2.0\Anvyl.JsonLocalizer.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,5 +20,4 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
-
 </Project>

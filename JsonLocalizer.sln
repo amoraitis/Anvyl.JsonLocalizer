@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A443E44C-6880-4210-9FD3-865FF23F16DA}"
 EndProject
@@ -9,15 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{707EEF6B-3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anvyl.JsonLocalizer", "src\Anvyl.JsonLocalizer\Anvyl.JsonLocalizer.csproj", "{C11B47CC-93D7-4F9D-B4D5-4DB3AF8FFE56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anvyl.JsonLocalizer.Presentation", "src\Anvyl.JsonLocalizer.Presentation\Anvyl.JsonLocalizer.Presentation.csproj", "{22888A12-E09E-4C63-A770-20900EE259A1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{BD6D614C-F86F-4ABF-8FB8-836367C15C50}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		.travis.yml = .travis.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anvyl.JsonLocalizer.Tests", "test\Anvyl.JsonLocalizer.Tests\Anvyl.JsonLocalizer.Tests.csproj", "{0CF41B00-8110-4015-84D0-A27EFF5D8A4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anvyl.JsonLocalizer.Tests", "test\Anvyl.JsonLocalizer.Tests\Anvyl.JsonLocalizer.Tests.csproj", "{0CF41B00-8110-4015-84D0-A27EFF5D8A4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +26,6 @@ Global
 		{C11B47CC-93D7-4F9D-B4D5-4DB3AF8FFE56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C11B47CC-93D7-4F9D-B4D5-4DB3AF8FFE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C11B47CC-93D7-4F9D-B4D5-4DB3AF8FFE56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22888A12-E09E-4C63-A770-20900EE259A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22888A12-E09E-4C63-A770-20900EE259A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22888A12-E09E-4C63-A770-20900EE259A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22888A12-E09E-4C63-A770-20900EE259A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0CF41B00-8110-4015-84D0-A27EFF5D8A4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0CF41B00-8110-4015-84D0-A27EFF5D8A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CF41B00-8110-4015-84D0-A27EFF5D8A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,7 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C11B47CC-93D7-4F9D-B4D5-4DB3AF8FFE56} = {A443E44C-6880-4210-9FD3-865FF23F16DA}
-		{22888A12-E09E-4C63-A770-20900EE259A1} = {A443E44C-6880-4210-9FD3-865FF23F16DA}
 		{0CF41B00-8110-4015-84D0-A27EFF5D8A4D} = {707EEF6B-3687-445F-91E2-B19DD8900321}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

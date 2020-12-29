@@ -11,7 +11,7 @@ namespace Anvyl.JsonLocalizer.Tests
         [Fact(DisplayName = "Show [<key>] whenever the <key> does not exist in json file")]
         public void Returns_Resource_NotFound_With_Square_Brackets()
         {
-            const string locKey = "Hello Traveller";
+            const string locKey = "test.Hello Traveller";
             Assert.NotNull(_localizer);
             Assert.NotNull(_localizer[locKey]);
             Assert.True(_localizer[locKey].ResourceNotFound);
@@ -21,31 +21,31 @@ namespace Anvyl.JsonLocalizer.Tests
         [Fact(DisplayName = "Returns a resource from CurrentCulture named json file")]
         public void ReturnsResource()
         {
-            const string locKey = "Hello";
+            const string locKey = "test.Hello";
             Assert.NotNull(_localizer);
             Assert.NotNull(_localizer[locKey]);
             Assert.True(!_localizer[locKey].ResourceNotFound);
             Assert.Equal("Noroc", _localizer[locKey].Value);
         }
-        
-        
+
+
         [Fact(DisplayName = "Creates a new json file with null values copied from default culture")]
         public void Creates_New_File_Copying_From_Default()
         {
-            var localizerRO = _localizer.WithCulture(new CultureInfo("ro-RO"));
-            const string locKey = "Hello";
-            Assert.NotNull(localizerRO);
-            Assert.True(localizerRO[locKey].ResourceNotFound);
-            Assert.Equal($"[{locKey}]", localizerRO[locKey]);
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("re-RO");
+            const string locKey = "test.Hello";
+            Assert.NotNull(_localizer);
+            Assert.True(_localizer[locKey].ResourceNotFound);
+            Assert.Equal($"[{locKey}]", _localizer[locKey]);
 
             // Cleanup
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
         }
-        
+
         [Fact(DisplayName = "Returns a resource that should be cached afterwards")]
         public void Returns_Resource_And_Is_Saved_In_Cache()
         {
-            const string locKey = "Hello";
+            const string locKey = "test.Hello";
             Assert.NotNull(_localizer);
             Assert.NotNull(_localizer[locKey]);
             Assert.True(!_localizer[locKey].ResourceNotFound);
@@ -59,14 +59,14 @@ namespace Anvyl.JsonLocalizer.Tests
         [Fact(DisplayName = "If the key does not exist it should not be saved in cache")]
         public void Unexistent_Value_Is_Not_Saved_In_Cache()
         {
-            const string locKey = "Hello Traveller";
+            const string locKey = "test.Hello Traveller";
             Assert.NotNull(_localizer);
             Assert.NotNull(_localizer[locKey]);
             Assert.True(_localizer[locKey].ResourceNotFound);
             Assert.Equal($"[{locKey}]", _localizer[locKey].Value);
             Assert.Null(_cache.GetString($"{CacheKeyPrefix}_{locKey}"));
         }
-        
+
         [Fact(DisplayName = "Test GetAllStrings")]
         public void GetAllStrings()
         {

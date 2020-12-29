@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: [ develop ]
+    types:
+      - completed
+
+jobs:
+  publish-nuget:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.402'
+    - name: Install dependencies
+      run: dotnet src/Anvyl.JsonLocalizer
+    - name: Build
+      run: dotnet build src/Anvyl.JsonLocalizer --configuration Release --no-restore
+    - name: Publish to NuGet
+      uses: Rebel028/publish-nuget@v2.6.0
+      with:
+        PROJECT_FILE_PATH: src/Anvyl.JsonLocalizer/Anvyl.JsonLocalizer.csproj
+        TAG_FORMAT: 'v*-beta'
+        NUGET_KEY: ${{secrets.PACKAGES_API_KEY}}
