@@ -17,7 +17,7 @@ jobs:
       with:
         dotnet-version: '3.1.402'
     - name: Install dependencies
-      run: dotnet src/Anvyl.JsonLocalizer
+      run: dotnet restore src/Anvyl.JsonLocalizer
     - name: Build
       run: dotnet build src/Anvyl.JsonLocalizer --configuration Release --no-restore
     - name: Publish to NuGet
