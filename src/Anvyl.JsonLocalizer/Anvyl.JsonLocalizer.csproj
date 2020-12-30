@@ -12,6 +12,8 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageId>AMoraitis.JsonLocalizer</PackageId>
+    <Product>AMoraitis.JsonLocalizer</Product>
   </PropertyGroup>
 
   <ItemGroup>
