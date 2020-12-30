@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
     <Version>1.1.2</Version>
@@ -7,7 +7,7 @@
     <Authors>Valeriu Balan, Anastasios Moraitis</Authors>
     <Description>Json Localization for .net</Description>
     <PackageProjectUrl>https://github.com/amoraitis/Anvyl.JsonLocalizer</PackageProjectUrl>
-    <License>https://github.com/amoraitis/Anvyl.JsonLocalizer/blob/master/LICENSE</License>
+    <PackageLicenseUrl>https://github.com/amoraitis/Anvyl.JsonLocalizer/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>.net localization json i18n cache redis</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
