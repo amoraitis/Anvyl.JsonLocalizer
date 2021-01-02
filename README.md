@@ -1,11 +1,17 @@
-## JsonLocalizer for ASP.NET Core 2.0 onward
- 
- |Appveyor|Travis|
- |  ---   | ---  |
- | [![Build status](https://ci.appveyor.com/api/projects/status/jgbp47cautxbkoaq?svg=true)](https://ci.appveyor.com/project/aodpi/anvyl-jsonlocalizer) | [![Build Status](https://travis-ci.org/aodpi/Anvyl.JsonLocalizer.svg?branch=master)](https://travis-ci.org/aodpi/Anvyl.JsonLocalizer) |
----
+# JsonLocalizer
 
-This package is an Implementation of `IStringLocalizer` for asp.net core. It uses json files to store localized strings plus the `IDistributedCache` implementation in order to cache out the localized strings. The flow is pretty simple,
+## This is a fork from [aodpi/Anvyl.JsonLocalizer](https://github.com/aodpi/Anvyl.JsonLocalizer)
+ 
+![Build](https://github.com/amoraitis/Anvyl.JsonLocalizer/workflows/Build/badge.svg)
+![Nuget](https://img.shields.io/nuget/v/AMoraitis.JsonLocalizer)
+
+Min suppoered versions:
+
+- .NET Core 3.1
+- .NET Standard 2.0
+
+---
+This package is an Implementation of `IStringLocalizer` for .net. It uses json files to store localized strings plus the `IDistributedCache` implementation in order to cache out the localized strings. The flow is pretty simple,
 
 * whenever a localized string is requested it is firstly checked in the `IDistributedCache`
 * If the value for the key is not found in the cache, it is then read from the json file for the respective `CultureInfo`
@@ -27,6 +33,23 @@ services.AddTransient(serviceProvider =>
 });
 ```
 
-## Installation
+## Why this fork?
 
-Checkout package description and installation instructions on [nuget.org](https://www.nuget.org/packages/Anvyl.JsonLocalizer)
+This fork is modified to use localized json files in the format: {namespace}.{locale}.json, so you can have multiple namespaces in different json files.
+
+Example for your monkey app:
+
+```js
+// Monkey.en-US.json
+{
+ "Label": "Monkey",
+ "Banana": "Banana"
+}
+```
+
+To get the "Monkey" text out of you localization resources, you can:
+
+```cs
+ // this will look into the Monkey file
+ Assert.Equal("Monkey", _localizer["Monkey.Label"])
+```
