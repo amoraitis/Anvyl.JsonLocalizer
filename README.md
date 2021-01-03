@@ -3,7 +3,7 @@
 ## This is a fork from [aodpi/Anvyl.JsonLocalizer](https://github.com/aodpi/Anvyl.JsonLocalizer)
  
 ![Build](https://github.com/amoraitis/Anvyl.JsonLocalizer/workflows/Build/badge.svg)
-![Nuget](https://img.shields.io/nuget/v/AMoraitis.JsonLocalizer)
+<a href="https://www.nuget.org/packages/AMoraitis.JsonLocalizer/" target="_blank"><img alt="Nuget" src="https://img.shields.io/nuget/v/AMoraitis.JsonLocalizer"></a>
 
 Min suppoered versions:
 
